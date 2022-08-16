@@ -29,3 +29,9 @@ The deployment terminal is set to 80 columns by 24 rows. That means that each li
 
 -----
 Happy coding!
+
+## Credits:
+
+1. used the 'Love Sndwiches' walk through project to set up the api link and basic structure of the project. 
+
+2. used 
