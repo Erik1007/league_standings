@@ -28,22 +28,33 @@ class standing():
     standingsTable.add_row(["TeamD", "0", "0", "0", "0"])
     standingsTable.add_row(["TeamE", "0", "0", "0", "0"])
  
+    print("Welcome to the League Standing")
     print(standingsTable)
+    print("Enter each team that played and the points they earned")
+    print("Wins = 3 points, Ties = 1 point and losses = 0 points")
 
 
-def new_game():
+def record_results():
     """
     introducing the teams in the league, the point structure
     of for wins, loses and ties
     """
     while True:
-        print("Welcome to the League Standing")
-        print("Wins = 3 points, Ties = 1 point and losses = 0 points")
-        print("Please enter the teams that played and their scores")
-        print(" for example: Team 1 = A, Team 1's score = 2")
+        
+        n = int(1)
+        team1 = {}
+        for i in range(n):
+            key = input("Enter the first team that played:  ")
+            value = input("How many points did they earn: ")
+            team1[key] = value
+        print(team1)
 
-        team1_str = input("Please enter Team 1: \n")
-        team1_int = input("Please enter Team 1's score: \n")
+        team2 = {}
+        for i in range(n):
+            key = input("Enter the second team that played: ")
+            value = input("How many points did they earn: ")
+            team2[key] = value
+        print(team2)
 
 
 def main():
@@ -51,7 +62,7 @@ def main():
     Run all program functions
     """
     standing()
-    new_game()
+    record_results()
 
 
 main()
