@@ -34,4 +34,4 @@ Happy coding!
 
 1. used the 'Love Sndwiches' walk through project to set up the api link and basic structure of the project. 
 
-2. used 
+2. used geeksforgeeks to learn about the 'pretty tables' impoort

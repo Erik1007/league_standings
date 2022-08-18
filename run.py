@@ -18,15 +18,12 @@ class standing():
     """
     Creates the intro for the league standings
     """
-    # Specify the Column Names while initializing the Table
     standingsTable = PrettyTable(["Team", "Win", "Loss", "Tie", "Points"])
- 
-    # Add rows
-    standingsTable.add_row(["TeamA", "0", "0", "0", "0"])
-    standingsTable.add_row(["TeamB", "0", "0", "0", "0"])
-    standingsTable.add_row(["TeamC", "0", "0", "0", "0"])
-    standingsTable.add_row(["TeamD", "0", "0", "0", "0"])
-    standingsTable.add_row(["TeamE", "0", "0", "0", "0"])
+    standingsTable.add_row(["A", "0", "0", "0", "0"])
+    standingsTable.add_row(["B", "0", "0", "0", "0"])
+    standingsTable.add_row(["C", "0", "0", "0", "0"])
+    standingsTable.add_row(["D", "0", "0", "0", "0"])
+    standingsTable.add_row(["E", "0", "0", "0", "0"])
  
     print("Welcome to the League Standing")
     print(standingsTable)
@@ -34,7 +31,7 @@ class standing():
     print("Wins = 3 points, Ties = 1 point and losses = 0 points")
 
 
-def record_results():
+def input_results():
     """
     introducing the teams in the league, the point structure
     of for wins, loses and ties
@@ -44,17 +41,42 @@ def record_results():
         n = int(1)
         team1 = {}
         for i in range(n):
-            key = input("Enter the first team that played:  ")
+            key = input("Enter the letter for the first team: ").upper()
             value = input("How many points did they earn: ")
             team1[key] = value
         print(team1)
 
         team2 = {}
         for i in range(n):
-            key = input("Enter the second team that played: ")
+            key = input("Enter the letter of the second team: ").upper()
             value = input("How many points did they earn: ")
             team2[key] = value
         print(team2)
+        
+        if validate_input(input_results):
+            print("data is valid")
+            break
+    return input_results
+
+
+def validate_input(key, value):
+    """
+    Inside the try, Raises ValueError if incorrect repsonses are given.
+    """
+    try:
+        if key not in "ABCDE":
+            raise ValueError(
+                "Please enter a valid team in the league"
+            )
+        if value not in "013":
+            raise ValueError(
+                "Invalid data, please enter a point amount "
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+        return False
+
+    return True
 
 
 def main():
@@ -62,7 +84,8 @@ def main():
     Run all program functions
     """
     standing()
-    record_results()
+    input_results()
+    validate_input()
 
 
 main()
