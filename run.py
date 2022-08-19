@@ -1,6 +1,5 @@
 import gspread
 from google.oauth2.service_account import Credentials
-from prettytable import PrettyTable
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -14,23 +13,29 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('league_standings')
 
 
-class standing():
+# Changed from having a table to a dictionary for the standings
+# using a list for the values. I prefer the way a table looks to 
+# a dictionary when printed, but as long as it works...
+class standings():
     """
     Creates the intro for the league standings
     """
-    standingsTable = PrettyTable(["Team", "Win", "Loss", "Tie", "Points"])
-    standingsTable.add_row(["A", "0", "0", "0", "0"])
-    standingsTable.add_row(["B", "0", "0", "0", "0"])
-    standingsTable.add_row(["C", "0", "0", "0", "0"])
-    standingsTable.add_row(["D", "0", "0", "0", "0"])
-    standingsTable.add_row(["E", "0", "0", "0", "0"])
- 
+    standings_dict = {
+        "Team": ["Win", "Loss", "Tie", "Points"],
+        "A": [0, 0, 0, 0],
+        "B": [0, 0, 0, 0],
+        "C": [0, 0, 0, 0],
+        "D": [0, 0, 0, 0],
+        "E": [0, 0, 0, 0],
+    }
+
     print("Welcome to the League Standing")
-    print(standingsTable)
+    print(standings_dict)
     print("Enter each team that played and the points they earned")
     print("Wins = 3 points, Ties = 1 point and losses = 0 points")
 
-
+# saving the users input into a dictionary: single letter each 
+#and a point value for each team to indicate the outcome of the match
 def input_results():
     """
     introducing the teams in the league, the point structure
@@ -59,6 +64,9 @@ def input_results():
     return input_results
 
 
+# this function is to validate that the correct information is 
+# used and providing an error message if not (this function is 
+# incomplete)
 def validate_input(key, value):
     """
     Inside the try, Raises ValueError if incorrect repsonses are given.
@@ -73,17 +81,47 @@ def validate_input(key, value):
                 "Invalid data, please enter a point amount "
             )
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
+        print(f"Invalid data: {e}, please try again.\n")    
         return False
 
     return True
 
+# This is where I am trying to figure out how to add the inputed
+# points value from the user into the exting standings dictionary
+# My thought is to add single values to the W,L,T list-values in the 
+# dict, while simulatenously increasing the points total with the 
+# respective user input points value -> if that makes sense
+def update_standings_dict():
+    pass
 
+
+# The thought is to record the users input on to one sheet
+# and the standing on a second sheet. ALTHOUGH, as this is 
+# not a requirement, i might delete this step altogether
+def update_spreadsheet():
+    pass
+
+
+# I am trying to figure how to use the sort function off the last 
+# listed colomns for each each key to determine the order of keys
+# from highest value to lowest
+def sort_descending_standings():
+    pass
+
+
+#This is just to show the most updated version of the standings 
+# table.
+def print_updated_standings():
+    pass
+
+
+# This function is to house all call functions, this function 
+# is incomplete
 def main():
     """
-    Run all program functions
+    A function to run all program functions
     """
-    standing()
+    standings()
     input_results()
     validate_input()
 
