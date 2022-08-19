@@ -16,23 +16,20 @@ SHEET = GSPREAD_CLIENT.open('league_standings')
 # Changed from having a table to a dictionary for the standings
 # using a list for the values. I prefer the way a table looks to 
 # a dictionary when printed, but as long as it works...
-class standings():
-    """
-    Creates the intro for the league standings
-    """
-    standings_dict = {
-        "Team": ["Win", "Loss", "Tie", "Points"],
-        "A": [0, 0, 0, 0],
-        "B": [0, 0, 0, 0],
-        "C": [0, 0, 0, 0],
-        "D": [0, 0, 0, 0],
-        "E": [0, 0, 0, 0],
-    }
 
-    print("Welcome to the League Standing")
-    print(standings_dict)
-    print("Enter each team that played and the points they earned")
-    print("Wins = 3 points, Ties = 1 point and losses = 0 points")
+standings = {
+    "Team": ["Win", "Loss", "Tie", "Points"],
+    "A": [0, 0, 0, 0],
+    "B": [0, 0, 0, 0],
+    "C": [0, 0, 0, 0],
+    "D": [0, 0, 0, 0],
+    "E": [0, 0, 0, 0],
+}
+
+print("Welcome to the League Standing")
+print(standings)
+print("Enter each team that played and the points they earned")
+print("Wins = 3 points, Ties = 1 point and losses = 0 points")
 
 # saving the users input into a dictionary: single letter each 
 #and a point value for each team to indicate the outcome of the match
@@ -91,8 +88,25 @@ def validate_input(key, value):
 # My thought is to add single values to the W,L,T list-values in the 
 # dict, while simulatenously increasing the points total with the 
 # respective user input points value -> if that makes sense
-def update_standings_dict():
-    pass
+def update_standings():
+    """
+    Updating the standings dictionary Win, Loss, Tie and Points
+    values for each key using the Users input dictionary values
+    """
+# This is where things go to hell...I cant figure out if I should 
+# loop off the key and add user points to the [-1] for the list-vlaue?
+# But this is where I am completly lost... 
+    standings.update(team1)
+    for key in keys:
+        if "key" == "A":
+            if value == 3:
+                [0] += 1,
+                [-1] += 3,
+            if value == 1:
+                [2] += 1, 
+            if value == 0:
+                [1] += 1, 
+        print(standings)    
 
 
 # The thought is to record the users input on to one sheet
