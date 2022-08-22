@@ -1,4 +1,5 @@
 import gspread
+import operator
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -200,7 +201,8 @@ def update_standings():
                 standings[key][2] += 1,
             if team2[key] == 0:
                 standings[key][1] += 1,
-    return standings
+                
+    return update_standings
 
 
 # The thought is to record the users input on to one sheet
@@ -224,13 +226,19 @@ def update_worksheet(data, worksheet):
 # listed colomns for each each key to determine the order of keys
 # from highest value to lowest
 def sort_descending_standings():
-    pass
     """
+    Sorting the standings dictionary from highest 'point value'
+    to lowest based on users input
+    """
+    sorted_standings = sorted(update_standings.items(), key=operator.itemgetter(-1), reverse=True)
+    print(sorted_standings)
 
-    """
+    return sorted_standings
 
 # This function is to house all call functions, this function
 # is incomplete
+
+
 def main():
     """
     A function to run all program functions
@@ -238,8 +246,11 @@ def main():
     # standings()
     input_results()
     validate_input(team1, team2)
+    # update_worksheet(sales_data, "games")
+    # update_worksheet(new_surplus_data, "standings")
     update_standings()
+    sort_descending_standings()
 
 
 main()
-print(update_standings)
+print(sorted_standings)
