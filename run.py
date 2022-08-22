@@ -200,15 +200,24 @@ def update_standings():
                 standings[key][2] += 1,
             if team2[key] == 0:
                 standings[key][1] += 1,
+    return standings
 
-    print(standings)
-   
-           
+
 # The thought is to record the users input on to one sheet
 # and the standing on a second sheet. ALTHOUGH, as this is
 # not a requirement, i might delete this step altogether
-def update_spreadsheet():
+
+
+def update_worksheet(data, worksheet):
     pass
+    """
+    updating users input for the teams' points to a sheet as a
+    saved record, and update on the overall league standings
+    """
+    print(f"Updating worksheet {worksheet} worksheet...\n")
+    worksheet_to_update = SHEET.worksheet(worksheet)
+    worksheet_to_update.append_row(data)
+    print(f"{worksheet} worksheet updated successfully\n")
 
 
 # I am trying to figure how to use the sort function off the last
@@ -216,13 +225,9 @@ def update_spreadsheet():
 # from highest value to lowest
 def sort_descending_standings():
     pass
+    """
 
-
-# This is just to show the most updated version of the standings
-# table.
-def print_updated_standings():
-    pass
-
+    """
 
 # This function is to house all call functions, this function
 # is incomplete
@@ -232,8 +237,9 @@ def main():
     """
     # standings()
     input_results()
-    validate_input()
+    validate_input(team1, team2)
     update_standings()
 
 
 main()
+print(update_standings)
