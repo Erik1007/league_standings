@@ -30,20 +30,18 @@ def input_results():
     """
     while True:     
         team1 = {}
-        for i in range(n):
-            key = input("Enter the letter for the first team: ").upper()
-            value = input("How many points did they earn: ")
-            team1[key] = value
+        key = input("Enter the letter for the first team: ").upper()
+        value = input("How many points did they earn: ")
+        team1[key] = value
         print(team1)
 
         team2 = {}
-        for i in range(n):
-            key = input("Enter the letter of the second team: ").upper()
-            value = input("How many points did they earn: ")
-            team2[key] = value
+        key = input("Enter the letter of the second team: ").upper()
+        # value = input("How many points did they earn: ")
+        team2[key] = value
         print(team2)
         
-        if validate_input(key, value):
+        if validate_input(team1, team2):
             print("data is valid")
             break
     return input_results
@@ -58,18 +56,13 @@ def validate_input(key, value):
     """
     try:
         if key not in "ABCDE":
-            raise ValueError(
-                "Please enter a valid team in the league"
-            )
+            print("Please enter a valid team in the league")
+        return False       
         if value not in "013":
-            raise ValueError(
-                "Invalid data, please enter a point amount "
-            )
-    except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
+            print("Invalid data, please enter a point amount")
         return False
 
-    return True
+        return True
 
 
 # This is where I am trying to figure out how to add the inputed
@@ -92,7 +85,7 @@ def update_standings():
                 standings[key][0] += 1
                 standings[key][-1] += 3
             if team1[key] == 1:
-                standings[key][2] += 1,
+                standings[key][2] += 1
             if team1[key] == 0:
                 standings[key][1] += 1
 
@@ -102,9 +95,9 @@ def update_standings():
                 standings[key][0] += 1
                 standings[key][-1] += 3
             if team2[key] == 1:
-                standings[key][2] += 1,
+                standings[key][2] += 1
             if team2[key] == 0:
-                standings[key][1] += 1,
+                standings[key][1] += 1
 
     for key in team1.keys("B"):
         if key in standings.keys("B"):
@@ -211,7 +204,6 @@ def main():
     """
     # standings()
     input_results()
-    validate_input(team1, team2)
     update_standings()
     sort_descending_standings()
 
