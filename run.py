@@ -1,18 +1,4 @@
-import gspread
 import operator
-from google.oauth2.service_account import Credentials
-
-SCOPE = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-    ]
-
-CREDS = Credentials.from_service_account_file('creds.json')
-SCOPED_CREDS = CREDS.with_scopes(SCOPE)
-GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('league_standings')
-
 
 # Changed from having a table to a dictionary for the standings
 # using a list for the values. I prefer the way a table looks to
@@ -42,9 +28,7 @@ def input_results():
     introducing the teams in the league, the point structure
     of for wins, loses and ties
     """
-    while True:
-        
-        n = int(1)
+    while True:     
         team1 = {}
         for i in range(n):
             key = input("Enter the letter for the first team: ").upper()
@@ -204,24 +188,6 @@ def update_standings():
                 
     return update_standings
 
-
-# The thought is to record the users input on to one sheet
-# and the standing on a second sheet. ALTHOUGH, as this is
-# not a requirement, i might delete this step altogether
-
-
-def update_worksheet(data, worksheet):
-    pass
-    """
-    updating users input for the teams' points to a sheet as a
-    saved record, and update on the overall league standings
-    """
-    print(f"Updating worksheet {worksheet} worksheet...\n")
-    worksheet_to_update = SHEET.worksheet(worksheet)
-    worksheet_to_update.append_row(data)
-    print(f"{worksheet} worksheet updated successfully\n")
-
-
 # I am trying to figure how to use the sort function off the last
 # listed colomns for each each key to determine the order of keys
 # from highest value to lowest
@@ -246,8 +212,6 @@ def main():
     # standings()
     input_results()
     validate_input(team1, team2)
-    # update_worksheet(sales_data, "games")
-    # update_worksheet(new_surplus_data, "standings")
     update_standings()
     sort_descending_standings()
 
