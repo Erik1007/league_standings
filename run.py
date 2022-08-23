@@ -1,8 +1,5 @@
 import operator
 
-# Changed from having a table to a dictionary for the standings
-# using a list for the values. I prefer the way a table looks to
-# a dictionary when printed, but as long as it works...
 
 standings = {
     "Team": ["Win", "Loss", "Tie", "Points"],
@@ -79,8 +76,8 @@ def update_standings():
 # loop off the key and add user points to the [-1] for the
 # dictionary key value list?
 # But this is where I am completly lost...
-    for key in team1.keys("A"):
-        if key in standings.keys("A"):
+    for key in team1.keys():
+        if key in standings.keys():
             if team1[key] == 3:
                 standings[key][0] += 1
                 standings[key][-1] += 3
@@ -89,8 +86,8 @@ def update_standings():
             if team1[key] == 0:
                 standings[key][1] += 1
 
-    for key in team2.keys("A"):
-        if key in standings.keys("A"):
+    for key in team2.keys():
+        if key in standings.keys():
             if team2[key] == 3:
                 standings[key][0] += 1
                 standings[key][-1] += 3
@@ -99,85 +96,15 @@ def update_standings():
             if team2[key] == 0:
                 standings[key][1] += 1
 
-    for key in team1.keys("B"):
-        if key in standings.keys("B"):
-            if team1[key] == 3:
-                standings[key][0] += 1
-                standings[key][-1] += 3
-            if team1[key] == 1:
-                standings[key][2] += 1,
-            if team1[key] == 0:
-                standings[key][1] += 1
-
-    for key in team2.keys("B"):
-        if key in standings.keys("B"):
-            if team2[key] == 3:
-                standings[key][0] += 1
-                standings[key][-1] += 3
-            if team2[key] == 1:
-                standings[key][2] += 1,
-            if team2[key] == 0:
-                standings[key][1] += 1,
-
-    for key in team1.keys("C"):
-        if key in standings.keys("C"):
-            if team1[key] == 3:
-                standings[key][0] += 1
-                standings[key][-1] += 3
-            if team1[key] == 1:
-                standings[key][2] += 1,
-            if team1[key] == 0:
-                standings[key][1] += 1,
-
-    for key in team2.keys("C"):
-        if key in standings.keys("C"):
-            if team2[key] == 3:
-                standings[key][0] += 1
-                standings[key][-1] += 3
-            if team2[key] == 1:
-                standings[key][2] += 1,
-            if team2[key] == 0:
-                standings[key][1] += 1,
-
-    for key in team1.keys("D"):
-        if key in standings.keys("D"):
-            if team1[key] == 3:
-                standings[key][0] += 1
-                standings[key][-1] += 3
-            if team1[key] == 1:
-                standings[key][2] += 1,
-            if team1[key] == 0:
-                standings[key][1] += 1,
-
-    for key in team2.keys("D"):
-        if key in standings.keys("D"):
-            if team2[key] == 3:
-                standings[key][0] += 1
-                standings[key][-1] += 3
-            if team2[key] == 1:
-                standings[key][2] += 1,
-            if team2[key] == 0:
-                standings[key][1] += 1,
-
-    for key in team1.keys("E"):
-        if key in standings.keys("E"):
-            if team1[key] == 3:
-                standings[key][0] += 1
-                standings[key][-1] += 3
-            if team1[key] == 1:
-                standings[key][2] += 1,
-            if team1[key] == 0:
-                standings[key][1] += 1,
-
-    for key in team2.keys("E"):
-        if key in standings.keys("E"):
-            if team2[key] == 3:
-                standings[key][0] += 1
-                standings[key][-1] += 3
-            if team2[key] == 1:
-                standings[key][2] += 1,
-            if team2[key] == 0:
-                standings[key][1] += 1,
+    # if W:
+        # standings[team1][0]++
+        # standings[team2][1]++
+    # elif l:
+        # standings[team2][0]++
+        # standings[team1][1]++
+    #else:
+        # standings[team1][3]++
+        # standings[team2][3]++
                 
     return update_standings
 
