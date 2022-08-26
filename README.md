@@ -30,8 +30,32 @@ The deployment terminal is set to 80 columns by 24 rows. That means that each li
 -----
 Happy coding!
 
-## Credits:
+## Sales Pitch for project:
+What it is, why I made it and its value to others...
+
+## features of the site
+
+## possible future features and implemetations
+
+## Testing 
+
+## Validation test with screenshots
+
+## Unfixed bugs:
+
+## Deployment process
+
+
+##  Code Credits:
 
 1. used the 'Love Sndwiches' walk through project to set up the api link and basic structure of the project. 
 
-2. used geeksforgeeks to learn about the 'pretty tables' impoort
+2. used geeksforgeeks to learn about the 'pretty tables' import (removed)
+
+3. used w3resource [https://www.w3resource.com/python-exercises/dictionary/python-data-type-dictionary-exercise-1.php#:~:text=Use%20dict.,based%20on%20the%20second%20argument.] for help with dicitonaries
+
+4. used thispointer [https://thispointer.com/python-dictionary-with-multiple-values-per-key/] for help with dictionary useage
+
+5. used stackoverflow [https://stackoverflow.com/questions/14147369/make-a-dictionary-in-python-from-input-values] for looping inout into dicitonaries
+
+6. 
