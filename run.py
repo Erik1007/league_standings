@@ -1,13 +1,10 @@
-import operator
-
-
 standings = {
-    "Team": ["Win", "Loss", "Tie", "Points"],
-    "A": [0, 0, 0, 0],
-    "B": [0, 0, 0, 0],
-    "C": [0, 0, 0, 0],
-    "D": [0, 0, 0, 0],
-    "E": [0, 0, 0, 0],
+    "Team": {"Wins": 0, "Losses": 0, "Ties": 0, "Points": 0},
+    "A": {"wins": 0, "losses": 0, "ties": 0, "points": 0},
+    "B": {"wins": 0, "losses": 0, "ties": 0, "points": 0},
+    "C": {"wins": 0, "losses": 0, "ties": 0, "points": 0},
+    "D": {"wins": 0, "losses": 0, "ties": 0, "points": 0},
+    "E": {"wins": 0, "losses": 0, "ties": 0, "points": 0},
 }
 team1 = {}
 team2 = {}
@@ -21,9 +18,9 @@ print("Wins = 3 points, Ties = 1 point and losses = 0 points")
 def input_results():
     """
     registering the users input for which team played and how many
-    points were earned  
+    points were earned
     """
-    while True:   
+    while True:
         team1 = {}
         key = input("Enter the letter for the first team: ").upper()
         value = input("Did they Win (W), lose (L) or Draw (D): ").upper()
@@ -32,9 +29,10 @@ def input_results():
 
         team2 = {}
         key = input("Enter the letter of the second team: ").upper()
+        value = input("Did they Win (W), lose (L) or Draw (D): ").upper()
         team2[key] = value
         print(team2)
-        
+      
         if validate_input(team1, team2):
             print("data is valid")
             break
@@ -53,14 +51,6 @@ def validate_input(key, value):
         return False
 
     return True
-
-
-# This is where I am trying to figure out how to add the inputed
-# points value from the user into the exting standings dictionary
-# My thought is to add single values to the W,L,T list-values in the
-# dict, while simulatenously increasing the points total with the
-# respective user input points value
-# But this is where I am completly lost..
 
 
 def update_standings():
@@ -88,30 +78,25 @@ def update_standings():
             if team2[key] == 0:
                 standings[key][1] += 1
 
-    # if W:
-        # standings[team1][0]++
-        # standings[team2][1]++
-    # elif l:
-        # standings[team2][0]++
-        # standings[team1][1]++
-    #else:
-        # standings[team1][3]++
-        # standings[team2][3]++
-                
-    return update_standings
 
-# I am trying to figure how to use the sort function off the last
-# listed value for each each key to determine the order of keys
-# from highest point value to lowest
-def sort_descending_standings():
+def sorted_standings():
     """
     Sorting the standings dictionary from highest 'point value'
     to lowest based on users input
     """
-    sorted_standings = sorted(update_standings.items(), key=operator.itemgetter(-1), reverse=True)
-    print(sorted_standings)
+    table = []
+    while len(standings.keys()) > 0:
+        max_points = -1
+        top_team = None
+        for team in standings.keys():
+            if standings[team]['points'] > max_points:
+                top_team = team
+                max_points = standings[team]['points']
+        table.append({'team': top_team, 'points': max_points})
+        del standings[top_team]
 
-    return sorted_standings
+    print(standings)
+    print(table)
 
 
 def main():
@@ -120,7 +105,7 @@ def main():
     """
     input_results()
     update_standings()
-    sort_descending_standings()
+    sorted_standings()
 
 
 main()

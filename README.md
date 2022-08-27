@@ -30,12 +30,20 @@ The deployment terminal is set to 80 columns by 24 rows. That means that each li
 -----
 Happy coding!
 
-## Sales Pitch for project:
-What it is, why I made it and its value to others...
+
+# A League Standings Table
+
+These days there are an almost endless amount of need for an adaptable standings table; from fantasy leagues, to little leagues, and sports leagues. This basic structure for a league standings table is designed to be adaptable for the use of anyone.
+
+As a person that repeatedly finds themself in an administration situation for athletic groups and social activities; this adaptable league standings structure would be a massive time and stress saver. This Standings Table is deisgned to be adaptable for everything from kids leagues to poker groups. With small changes and adaptations this basic code can be used to meet anyones needs.
 
 ## features of the site
 
-## possible future features and implemetations
+# Possible future features and implemetations
+
+This basic structure is designed to adated to suit the needs of who ever needs or wants to use it. The team names are generic and adaptable to meet what ever leagues are. Additionally the amount of teams is also easily adaptable to suit the needs of the new user. 
+
+Depending on the users needs, this basic code can be adapted and expanded to be used for players statistics, win/loss percentages, and more. This code could be the foundation for an entire league standings site including live game scores, player profiles, and every level of sport specific statistics for the sport in question.
 
 ## Testing 
 
@@ -46,7 +54,7 @@ What it is, why I made it and its value to others...
 ## Deployment process
 
 
-##  Code Credits:
+# Code Credits:
 
 1. used the 'Love Sndwiches' walk through project to set up the api link and basic structure of the project. 
 
