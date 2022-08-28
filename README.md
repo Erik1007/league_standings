@@ -72,4 +72,4 @@ Depending on the users needs, this basic code can be adapted and expanded to be 
 
 5. used stackoverflow [https://stackoverflow.com/questions/14147369/make-a-dictionary-in-python-from-input-values] for looping inout into dicitonaries
 
-6. 
+6. used [https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax] for help with writing the read me page.

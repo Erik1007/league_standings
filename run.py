@@ -1,18 +1,24 @@
 standings = {
-    "Team": {"Wins": 0, "Losses": 0, "Ties": 0, "Points": 0},
-    "A": {"Wins": 0, "Losses": 0, "Ties": 0, "Points": 0},
-    "B": {"Wins": 0, "Losses": 0, "Ties": 0, "Points": 0},
-    "C": {"Wins": 0, "Losses": 0, "Ties": 0, "Points": 0},
-    "D": {"Wins": 0, "Losses": 0, "Ties": 0, "Points": 0},
-    "E": {"Wins": 0, "Losses": 0, "Ties": 0, "Points": 0},
+    "A": {"Wins": 0, "Losses": 0, "Ties": 0},
+    "B": {"Wins": 0, "Losses": 0, "Ties": 0},
+    "C": {"Wins": 0, "Losses": 0, "Ties": 0},
+    "D": {"Wins": 0, "Losses": 0, "Ties": 0},
+    "E": {"Wins": 0, "Losses": 0, "Ties": 0},
 }
+
+score_map_dict = {
+    'W': 'Wins',
+    'L': 'Losses',
+    'T': 'Ties',
+}
+
 team1 = {}
 team2 = {}
 
-print("Welcome to the League Standing")
-print(standings)
-print("Enter the teams that played and the outcome of the game")
-print("Wins = 3 points, Ties = 1 point and losses = 0 points")
+print("Welcome to the League Standing",
+      standings,
+      "Enter the teams that played and the outcome of the game",
+      sep='\n')
 
 
 def input_results():
@@ -21,25 +27,22 @@ def input_results():
     points were earned
     """
     while True:
-        team1 = {}
-        key = str(input("Enter the letter for the first team: ").upper())
-        value = str(input("Did they Win (W), lose (L) or Tie (T): ").upper())
-        team1[key] = value
+        key = input("Enter the letter for the first team: ").upper()
+        value = input("Did they Win (W), lose (L) or Tie (T): ").upper()
+        team1[key] = score_map_dict[value]  # Returns Wins, Losses, or Ties
         print(team1)
 
         if validate_input(key, value):
             print("data is valid")
 
-        team2 = {}
-        key = str(input("Enter the letter of the second team: ").upper())
-        value = str(input("Did they Win (W), lose (L) or Tie (T): ").upper())
-        team2[key] = value
+        key = input("Enter the letter of the second team: ").upper()
+        value = input("Did they Win (W), lose (L) or Tie (T): ").upper()
+        team2[key] = score_map_dict[value]
         print(team2)
       
         if validate_input(key, value):
             print("data is valid")
             break
-    return input_results
 
 
 def validate_input(key, value):
