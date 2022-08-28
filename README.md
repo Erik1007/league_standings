@@ -39,6 +39,12 @@ As a person that repeatedly finds themself in an administration situation for at
 
 ## features of the site
 
+There a few main features for this code:
+
+The first is a basic intorduction and explanation of the League Standings structure with welcomings information.
+
+The 
+
 # Possible future features and implemetations
 
 This basic structure is designed to adated to suit the needs of who ever needs or wants to use it. The team names are generic and adaptable to meet what ever leagues are. Additionally the amount of teams is also easily adaptable to suit the needs of the new user. 

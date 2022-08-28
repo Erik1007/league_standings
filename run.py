@@ -1,17 +1,17 @@
 standings = {
     "Team": {"Wins": 0, "Losses": 0, "Ties": 0, "Points": 0},
-    "A": {"wins": 0, "losses": 0, "ties": 0, "points": 0},
-    "B": {"wins": 0, "losses": 0, "ties": 0, "points": 0},
-    "C": {"wins": 0, "losses": 0, "ties": 0, "points": 0},
-    "D": {"wins": 0, "losses": 0, "ties": 0, "points": 0},
-    "E": {"wins": 0, "losses": 0, "ties": 0, "points": 0},
+    "A": {"Wins": 0, "Losses": 0, "Ties": 0, "Points": 0},
+    "B": {"Wins": 0, "Losses": 0, "Ties": 0, "Points": 0},
+    "C": {"Wins": 0, "Losses": 0, "Ties": 0, "Points": 0},
+    "D": {"Wins": 0, "Losses": 0, "Ties": 0, "Points": 0},
+    "E": {"Wins": 0, "Losses": 0, "Ties": 0, "Points": 0},
 }
 team1 = {}
 team2 = {}
 
 print("Welcome to the League Standing")
 print(standings)
-print("Enter each team that played and the points they earned")
+print("Enter the teams that played and the outcome of the game")
 print("Wins = 3 points, Ties = 1 point and losses = 0 points")
 
 
@@ -22,18 +22,21 @@ def input_results():
     """
     while True:
         team1 = {}
-        key = input("Enter the letter for the first team: ").upper()
-        value = input("Did they Win (W), lose (L) or Draw (D): ").upper()
+        key = str(input("Enter the letter for the first team: ").upper())
+        value = str(input("Did they Win (W), lose (L) or Tie (T): ").upper())
         team1[key] = value
         print(team1)
 
+        if validate_input(key, value):
+            print("data is valid")
+
         team2 = {}
-        key = input("Enter the letter of the second team: ").upper()
-        value = input("Did they Win (W), lose (L) or Draw (D): ").upper()
+        key = str(input("Enter the letter of the second team: ").upper())
+        value = str(input("Did they Win (W), lose (L) or Tie (T): ").upper())
         team2[key] = value
         print(team2)
       
-        if validate_input(team1, team2):
+        if validate_input(key, value):
             print("data is valid")
             break
     return input_results
@@ -46,7 +49,7 @@ def validate_input(key, value):
     if key not in "ABCDE":
         print("Please enter a valid team in the league")
         return False
-    if value not in "WLD":
+    if value not in "WLT":
         print("Invalid data, please enter the correct result")
         return False
 
@@ -60,22 +63,24 @@ def update_standings():
     """
     for key in team1.keys():
         if key in standings.keys():
-            if team1[key] == 3:
+            if team1[key] == 'W':
                 standings[key][0] += 1
-                standings[key][-1] += 3
-            if team1[key] == 1:
+                standings[key][3] += 3
+            if team1[key] == 'T':
                 standings[key][2] += 1
-            if team1[key] == 0:
+                standings[key][3] += 1
+            if team1[key] == 'L':
                 standings[key][1] += 1
 
     for key in team2.keys():
         if key in standings.keys():
-            if team2[key] == 3:
+            if team2[key] == 'W':
                 standings[key][0] += 1
-                standings[key][-1] += 3
-            if team2[key] == 1:
+                standings[key][3] += 3
+            if team2[key] == 'T':
                 standings[key][2] += 1
-            if team2[key] == 0:
+                standings[key][3] += 1
+            if team2[key] == 'L':
                 standings[key][1] += 1
 
 
@@ -86,13 +91,13 @@ def sorted_standings():
     """
     table = []
     while len(standings.keys()) > 0:
-        max_points = -1
+        max_wins = -1
         top_team = None
         for team in standings.keys():
-            if standings[team]['points'] > max_points:
+            if standings[team]['Wins'] > max_wins:
                 top_team = team
-                max_points = standings[team]['points']
-        table.append({'team': top_team, 'points': max_points})
+                max_wins = standings[team]['Wins']
+        table.append({'team': top_team, 'wins': max_wins})
         del standings[top_team]
 
     print(standings)
