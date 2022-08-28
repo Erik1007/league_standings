@@ -61,36 +61,25 @@ def validate_input(key, value):
 
 def update_standings():
     """
-    Updating the standings dictionary Win, Loss, Tie and Points
+    Updating the standings dictionary Win, Loss, and Tie
     values for each key using the Users input dictionary values
     """
-    for key in team1.keys():
-        if key in standings.keys():
-            if team1[key] == 'W':
-                standings[key][0] += 1
-                standings[key][3] += 3
-            if team1[key] == 'T':
-                standings[key][2] += 1
-                standings[key][3] += 1
-            if team1[key] == 'L':
-                standings[key][1] += 1
+    team_1_key = list(team1.keys())[0]
+    team_2_key = list(team2.keys())[0]
 
-    for key in team2.keys():
-        if key in standings.keys():
-            if team2[key] == 'W':
-                standings[key][0] += 1
-                standings[key][3] += 3
-            if team2[key] == 'T':
-                standings[key][2] += 1
-                standings[key][3] += 1
-            if team2[key] == 'L':
-                standings[key][1] += 1
+    team_1_value = team1[team_1_key]
+    team_2_value = team2[team_2_key]
+
+    standings[team_1_key][team_1_value] += 1
+    standings[team_2_key][team_2_value] += 1
+
+    print(standings)
 
 
 def sorted_standings():
     """
-    Sorting the standings dictionary from highest 'point value'
-    to lowest based on users input
+    Sorting the standings dictionary for the team with the most
+    wins to the lowest based on users input
     """
     table = []
     while len(standings.keys()) > 0:
