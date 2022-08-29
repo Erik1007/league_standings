@@ -1,3 +1,5 @@
+from pprint import pprint
+
 standings = {
     "A": {"Wins": 0, "Losses": 0, "Ties": 0},
     "B": {"Wins": 0, "Losses": 0, "Ties": 0},
@@ -29,25 +31,23 @@ def input_results():
     team1 = {}
     team2 = {}
     while True:
-        team1 = {}
-        key = str(input("Enter the letter for the first team: ").upper())
-        value = str(input("Did they Win (W), lose (L) or Tie (T): ").upper())
-        team1[key] = value
-        print(team1)
+        key = input("Enter the letter for the first team: ").upper()
+        value = input("Did they Win (W), lose (L) or Tie (T): ").upper()
 
         if validate_input(key, value):
             print("data is valid")
+            team1[key] = score_map_dict[value]
+            print(team1)
 
-        team2 = {}
-        key = str(input("Enter the letter of the second team: ").upper())
-        value = str(input("Did they Win (W), lose (L) or Tie (T): ").upper())
-        team2[key] = value
-        print(team2)
+        key = input("Enter the letter of the second team: ").upper()
+        value = input("Did they Win (W), lose (L) or Tie (T): ").upper()
       
         if validate_input(key, value):
             print("data is valid")
+            team2[key] = score_map_dict[value]
+            print(team2)
+            return (team1, team2)
             break
-    return input_results
 
 
 def validate_input(key, value):
