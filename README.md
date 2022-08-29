@@ -70,6 +70,12 @@ Depending on the users needs, this basic code can be adapted and expanded to be 
 
 4. used thispointer [https://thispointer.com/python-dictionary-with-multiple-values-per-key/] for help with dictionary useage
 
-5. used stackoverflow [https://stackoverflow.com/questions/14147369/make-a-dictionary-in-python-from-input-values] for looping inout into dicitonaries
+5. used stackoverflow [https://stackoverflow.com/questions/14147369/make-a-dictionary-in-python-from-input-values] for looping input into dicitonaries
 
 6. used [https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax] for help with writing the read me page.
+
+7. used [https://www.programiz.com/python-programming/methods/built-in/sorted] for help with sorting dicitonary values
+
+8. used [https://www.w3schools.com/python/python_lambda.asp] how to use lambda
+
+9. used [https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value] for help with sorting values in a dictionary in reverse
