@@ -79,3 +79,9 @@ Depending on the users needs, this basic code can be adapted and expanded to be 
 8. used [https://www.w3schools.com/python/python_lambda.asp] how to use lambda
 
 9. used [https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value] for help with sorting values in a dictionary in reverse
+
+10. used [https://realpython.com/python-lambda/] for lambda understanding, explanation and use
+
+11. used [https://www.geeksforgeeks.org/pprint-data-pretty-printer-python/] to find a better way to print out the standings dictionary after updating
+
+12. 

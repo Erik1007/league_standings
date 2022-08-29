@@ -85,19 +85,12 @@ def show_sorted_standings():
     Sorting the standings dictionary for the team with the most
     wins to the lowest based on users input
     """
-    while len(standings.keys()) > 0:
-        max_wins = -1
-        top_team = None
-        for team in standings.keys():
-            if standings[team]['Wins'] > max_wins:
-                top_team = team
-                max_wins = standings[team]['Wins']
-        table.append({'team': top_team, 'wins': max_wins})
-        del standings[top_team]
+    sorted_standings = []
+    for item in sorted(standings.items(), key=lambda item: item[1]['Wins'], reverse=True):
+        sorted_standings.append(item)
 
-    # print(standings)
-    # print(table)
-
+    pprint(sorted_standings)
+  
 
 def main():
     """
