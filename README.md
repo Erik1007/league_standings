@@ -1,38 +1,16 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-Welcome Erik1007,
-
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
-
-## Reminders
-
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
-
-
-
-
-
 # A League 'Standings' Table
+
+
+# Table of contents
+1. [Introduction](#introduction)
+2. [Program Featurs](#program_features)
+3. [Future Implementations](#future_implementations)
+4. [Testing and Validation](#testing)
+5. [Unfixed Bugs](#unfixedbugs)
+6. [Deployment](#deployment)
+7. [Credits](#code-credits)
+
+# Introduction
 
 This program is a designed to be an adaptable and open structure for anyone that needs an automatic 'league standings' program. 
 
@@ -42,7 +20,8 @@ Anyone that finds themself in an administrative situation for athletic groups, t
 
 
 
-## Features of the site:
+
+## Program Features:
 
 ### League Introduction 
 
@@ -74,7 +53,7 @@ At the end of the tournament, the overall standings are displayed with the team 
 (SCREENSHOT)
 
 
-# Future Features and Implemetations
+## Future Features and Implemetations
 
 
 This basic structure is designed to adated to suit the needs of who ever needs or wants to use it. The team names are generic and adaptable to meet what ever leagues are. Additionally the amount of teams is also easily adaptable to suit the needs of the new user. 
@@ -104,7 +83,7 @@ There have been a number of bugs identified and solved through development proce
 ## Deployment process
 
 
-# Code Credits:
+## Code Credits:
 
 1. The Code Institute 'Love Sndwiches' walk through project was heavily referenced for help with code that was used in the overall structure of this program as well as in the development of the input results and validate input funcitons. 
 
