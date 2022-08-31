@@ -1,11 +1,11 @@
 from pprint import pprint
 
 standings = {
-    "A": {"Wins": 0, "Losses": 0, "Ties": 0},
-    "B": {"Wins": 0, "Losses": 0, "Ties": 0},
-    "C": {"Wins": 0, "Losses": 0, "Ties": 0},
-    "D": {"Wins": 0, "Losses": 0, "Ties": 0},
-    "E": {"Wins": 0, "Losses": 0, "Ties": 0},
+    "A": {"Wins": 0, "Ties": 0, "Losses": 0},
+    "B": {"Wins": 0, "Ties": 0, "Losses": 0},
+    "C": {"Wins": 0, "Ties": 0, "Losses": 0},
+    "D": {"Wins": 0, "Ties": 0, "Losses": 0},
+    "E": {"Wins": 0, "Ties": 0, "Losses": 0},
 }
 
 score_map_dict = {
@@ -14,13 +14,10 @@ score_map_dict = {
     'T': 'Ties',
 }
 
-welcome_message = f"""\
-Welcome to the League Standing
-{standings}
-Enter the teams that played and the outcome of the game
-"""
-
-print(welcome_message)
+print('Welcome to the League Standings \n')
+pprint(standings)
+print('To start the tournament: \n')
+print('Enter the teams that played and the outcome of the game')
 
 
 def input_results():
@@ -34,6 +31,13 @@ def input_results():
         key = input("Enter the letter for the first team: ").upper()
         value = input("Did they Win (W), lose (L) or Tie (T): ").upper()
 
+        # if team1[team_1_value] == 'Wins':
+            # team2[team_2_value] == 'Losses'
+        # if team1[team_1_value] == 'Losses':
+            # team2[team_2_value] == 'Wins'
+        # if team1[team_1_value] == 'Ties':
+            # team2[team_2_value] == 'Ties'
+
         if validate_input(key, value):
             print("data is valid")
             team1[key] = score_map_dict[value]
@@ -41,13 +45,13 @@ def input_results():
 
         key = input("Enter the letter of the second team: ").upper()
         value = input("Did they Win (W), lose (L) or Tie (T): ").upper()
-      
+    
         if validate_input(key, value):
             print("data is valid")
             team2[key] = score_map_dict[value]
             print(team2)
             return (team1, team2)
-            break
+        break
 
 
 def validate_input(key, value):
@@ -90,14 +94,14 @@ def show_sorted_standings():
         sorted_standings.append(item)
 
     pprint(sorted_standings)
-  
+
 
 def main():
     """
     A function to run all program functions
     """
     counter = 0
-    while counter < 5:
+    while counter < 9:
         counter += 1
         team1, team2 = input_results()
         update_standings(team1, team2)
