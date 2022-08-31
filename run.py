@@ -22,7 +22,7 @@ def played_all_games(team_name):
     """
     This is set a limit on how many times a team can play
     """
-    return count_games(team_name) >= MAX_TEAM_GAMES
+    return count_games(team_name) == MAX_TEAM_GAMES 
 
 
 def count_games(team_name):
@@ -37,12 +37,15 @@ def input_team_name(prompt):
     """
     Enter the team name for the game
     """
+    team_name = None
+
     while True:
         team_name = input(prompt).upper()
         if team_name_exists(team_name):
             break
         print('Please enter a valid team name')
-        return team_name
+
+    return team_name
 
 
 def team_name_exists(name):
@@ -57,11 +60,6 @@ def input_results():
     registering the users input for which team played and the
     results of the match
     """
-    print('Welcome to the League Standings \n')
-    print('In this tournament, There are 5 teams, each team plays 8 games')
-    pprint(teams)
-    print('To start the 40 game tournament: \n')
-    print('Enter the teams that played and the outcome of the game')
     team1 = {}
     team2 = {}
     while True:
@@ -119,7 +117,7 @@ def validate_game(team1_name, team2_name):
         print('Teams cannot play themself, please enter a valid name')
         return False
     return True
- 
+
 
 def update_team_standings(team1, team2):
     """
@@ -141,11 +139,13 @@ def show_sorted_standings():
     Sorting the standings dictionary for the team with the most
     wins to the lowest based on users input
     """
-    sorted_standings = []
-    for item in sorted(
-           teams.items(), key=lambda item: item[1]['WINS'], reverse=True):
-        sorted_standings.append(item)
-    pprint(sorted_standings)
+    counter = 1
+    if counter >= 40:
+        sorted_standings = []
+        for item in sorted(
+                teams.items(), key=lambda item: item[1]['WINS'], reverse=True):
+            sorted_standings.append(item)
+        pprint(show_sorted_standings)
 
 
 def main():
@@ -153,13 +153,20 @@ def main():
     This function holds all of the function calls to run the program and
     determine the amount of times the program runs
     """
+    print('Welcome to the League Standings \n')
+    print('In this tournament, There are 5 teams, each team plays 8 games')
+    pprint(teams)
+    print('To start the 40 game tournament: \n')
+    print('Enter the teams that played and the outcome of the game')
     counter = 1
-    while counter < MAX_LEAGUE_GAMES:
+    while counter:
         counter += 1
         team1, team2 = input_results()
         update_team_standings(team1, team2)
         pprint(teams)
-    show_sorted_standings()
+        played_all_games(MAX_LEAGUE_GAMES)
+        show_sorted_standings()
+    pprint(show_sorted_standings)
 
 
 if __name__ == '__main__':

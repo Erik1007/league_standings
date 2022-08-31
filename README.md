@@ -25,17 +25,27 @@ Anyone that finds themself in an administrative situation for athletic groups, t
 
 ### League Introduction 
 
+This league is modelled after a regular season where there are 5 teams and each team will play a total of 8 games for a total of 40 games in the season/tournament. (Of course all of this can be easily adjusted byt the user to match their individual needs.) 
+
 The first is a basic intoduction and explanation of the League Standings structure with welcomings information. The blank league standings is printed out with generic team identificaitons. After the standing, the user is prompted to provide information concerning the match.
 (SCREENSHOT)
 
-The user is encouraged to input an identification for the first team (A, B, C, etc.) and the result of the match: a 'w' for win, a 'l' for loss or a 't' for a tied match result. As well to enter the information for the seond team in the match. 
+The user is encouraged to input an identification for the first team (A, B, C, etc.) and the result of the match: a 'w' for win, a 'l' for loss or a 't' for a tied match result. As well to enter the information for the seond team in the match. Once the second team has been identified, the program displays the match outcome based off of team 1's results. (for example, if team 1 wins, team 2 loses, etc.)
 (SCREENSHOT)
 
 
 
 ### Input Validation
 
-There is an input validation function that provides an error prompt if the incorrect type of information is provided. The system automatically resets to allow the user the opportunity to re enter the correct information.
+There are multiple validation functions to make sure that the information the user provides is correct and accurate, for example:
+
+There is an input validation function to check if the team names that are entered are part of the team standings with a prompt for the user to use a valid input incase they entered the wrong key. 
+
+There is a second input validation checking that the match result information is correct with a prompt for the user to use a valid input incase they entered the wrong key. 
+
+A third validation checking that the team name is not entered more than once per match with a prompt letting the user know that a team cannot play itself.
+
+A fourth validation function counts the amount of games that a team has been involved in and provides a prompt alerting the user if the team has played too much.
 (SCREENSHOT)
 
 
@@ -56,9 +66,9 @@ At the end of the tournament, the overall standings are displayed with the team 
 ## Future Features and Implemetations
 
 
-This basic structure is designed to adated to suit the needs of who ever needs or wants to use it. The team names are generic and adaptable to meet what ever leagues are. Additionally the amount of teams is also easily adaptable to suit the needs of the new user. 
+This basic structure is designed to adated to suit the needs of who ever needs or wants to use it. The team names are generic and adaptable to meet the users needs for the league. Additionally the amount of teams is also easily adaptable to suit the needs of the new user. 
 
-Depending on the users needs, this basic code can be adapted and expanded to be used for players statistics, win/loss percentages, and more. This code could be the foundation for an entire league standings site including live game scores, accrued points totals, player profiles, and every level of sport specific statistics for the sport in question.
+This code could be the foundation for an entire league standings site including live game scores, accrued points totals, player profiles, and every level of sport specific statistics for the sport in question. Depending on the users needs, this basic code can be adapted and expanded to be used for players statistics, win/loss percentages, and more.
 
 
 
@@ -108,3 +118,9 @@ There have been a number of bugs identified and solved through development proce
 11. [pybit] (https://pybit.es/articles/dict-ordering/) was used for code to assist in the de-alphabizing of he value-list print out order in the update standings and show sorted standings function.
 
 12. for better understading of lambda, used [towardsdatascience] (https://towardsdatascience.com/lambda-functions-with-practical-examples-in-python-45934f3653a8)
+
+13. [stackoverflow](https://stackoverflow.com/questions/40302580/same-input-twice-not-to-be-entered-twice) was used to help with code and understanding on creating the max_games and played_all_games functions that count how many games each team has played.
+
+14. [stackoverflow](https://stackoverflow.com/questions/11948245/markdown-to-create-pages-and-table-of-contents) help with setting up the readme for better readability
+
+15. Code Institute Tutor Assistance significantly helped with trouble shooting, error tracking and debugging, naming advice,  and structure.
