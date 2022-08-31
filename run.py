@@ -1,55 +1,53 @@
 from pprint import pprint
 
 standings = {
-    "A": {"Wins": 0, "Ties": 0, "Losses": 0},
-    "B": {"Wins": 0, "Ties": 0, "Losses": 0},
-    "C": {"Wins": 0, "Ties": 0, "Losses": 0},
-    "D": {"Wins": 0, "Ties": 0, "Losses": 0},
-    "E": {"Wins": 0, "Ties": 0, "Losses": 0},
+    "A": {"WINS": 0, "TIES": 0, "LOSSES": 0},
+    "B": {"WINS": 0, "TIES": 0, "LOSSES": 0},
+    "C": {"WINS": 0, "TIES": 0, "LOSSES": 0},
+    "D": {"WINS": 0, "TIES": 0, "LOSSES": 0},
+    "E": {"WINS": 0, "TIES": 0, "LOSSES": 0},
 }
 
 score_map_dict = {
-    'W': 'Wins',
-    'L': 'Losses',
-    'T': 'Ties',
+    'W': 'WINS',
+    'L': 'LOSSES',
+    'T': 'TIES'
 }
 
 print('Welcome to the League Standings \n')
+print('In this basic structure, there are 5 teams, each team plays 8 games')
 pprint(standings)
-print('To start the tournament: \n')
+print('To start the 40 game tournament: \n')
 print('Enter the teams that played and the outcome of the game')
 
 
 def input_results():
     """
-    registering the users input for which team played and how many
-    points were earned
+    registering the users input for which team played and the
+    results of the match
     """
     team1 = {}
     team2 = {}
     while True:
-        key = input("Enter the letter for the first team: ").upper()
-        value = input("Did they Win (W), lose (L) or Tie (T): ").upper()
+        team1_name = input("Enter the letter for the first team: ").upper()
+        team1_score = input("Did they Win (W), lose (L) or Tie (T): ").upper()
+        team2_name = input("Enter the letter of the second team: ").upper()
 
-        # if team1[team_1_value] == 'Wins':
-            # team2[team_2_value] == 'Losses'
-        # if team1[team_1_value] == 'Losses':
-            # team2[team_2_value] == 'Wins'
-        # if team1[team_1_value] == 'Ties':
-            # team2[team_2_value] == 'Ties'
+        # TODO: ensure that a match is not recorded twice,
+        # that applies that a team does not host same team twice
 
-        if validate_input(key, value):
+        if validate_input(
+                team1_name, team1_score) and validate_team(team2_name):
             print("data is valid")
-            team1[key] = score_map_dict[value]
-            print(team1)
+            team1[team1_name] = score_map_dict[team1_score]
 
-        key = input("Enter the letter of the second team: ").upper()
-        value = input("Did they Win (W), lose (L) or Tie (T): ").upper()
-    
-        if validate_input(key, value):
-            print("data is valid")
-            team2[key] = score_map_dict[value]
-            print(team2)
+            if team1_score == 'W':
+                team2[team2_name] = 'LOSSES'
+            if team1_score == 'L':
+                team2[team2_name] = 'WINS'
+            if team1_score == 'T':
+                team2[team2_name] = 'TIES'
+            print(team1, team2)
             return (team1, team2)
         break
 
@@ -63,6 +61,16 @@ def validate_input(key, value):
         return False
     if value not in "WLT":
         print("Invalid data, please enter the correct result")
+        return False
+    return True
+
+
+def validate_team(name):
+    """
+    check if team is in the league
+    """
+    if name not in "ABCDE":
+        print("Please enter a valid team in the league")
         return False
     return True
 
@@ -90,7 +98,8 @@ def show_sorted_standings():
     wins to the lowest based on users input
     """
     sorted_standings = []
-    for item in sorted(standings.items(), key=lambda item: item[1]['Wins'], reverse=True):
+    for item in sorted(
+            standings.items(), key=lambda item: item[1]['WINS'], reverse=True):
         sorted_standings.append(item)
 
     pprint(sorted_standings)
@@ -98,14 +107,16 @@ def show_sorted_standings():
 
 def main():
     """
-    A function to run all program functions
+    This function holds all of the function calls to run the program and
+    determine the amount of times the program runs
     """
-    counter = 0
-    while counter < 9:
+    counter = 1
+    while counter < 40:
         counter += 1
         team1, team2 = input_results()
         update_standings(team1, team2)
     show_sorted_standings()
 
 
+# TODO: find out how to run the app only via python run.py not in the interactive shell
 main()

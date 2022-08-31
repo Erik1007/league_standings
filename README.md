@@ -3,7 +3,7 @@
 
 # Table of contents
 1. [Introduction](#introduction)
-2. [Program Featurs](#program_features)
+2. [Program Features](#program_features)
 3. [Future Implementations](#future_implementations)
 4. [Testing and Validation](#testing)
 5. [Unfixed Bugs](#unfixedbugs)
