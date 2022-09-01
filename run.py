@@ -1,7 +1,5 @@
 from pprint import pprint
 
-MAX_LEAGUE_GAMES = 40
-MAX_TEAM_GAMES = 8
 
 teams = {
     "A": {"WINS": 0, "TIES": 0, "LOSSES": 0},
@@ -16,21 +14,6 @@ score_map_dict = {
     'L': 'LOSSES',
     'T': 'TIES'
 }
-
-
-def played_all_games(team_name):
-    """
-    This is set a limit on how many times a team can play
-    """
-    return count_games(team_name) == MAX_TEAM_GAMES 
-
-
-def count_games(team_name):
-    """
-    counting the number of times a team plays
-    """
-    standing = teams[team_name]
-    return sum(standing.values())
 
 
 def input_team_name(prompt):
@@ -103,9 +86,7 @@ def validate_input(team_name, team_result):
     if team_result not in "WLT":
         print()
         return False
-    if played_all_games(team_name):
-        print('This team has played too many games, try again')
-        return False
+    
     return True
 
 
@@ -139,13 +120,12 @@ def show_sorted_standings():
     Sorting the standings dictionary for the team with the most
     wins to the lowest based on users input
     """
-    counter = 1
-    if counter >= 40:
-        sorted_standings = []
-        for item in sorted(
-                teams.items(), key=lambda item: item[1]['WINS'], reverse=True):
-            sorted_standings.append(item)
-        pprint(show_sorted_standings)
+    sorted_standings = []
+    for item in sorted(
+            teams.items(), key=lambda item: item[1]['WINS'], reverse=True):
+        sorted_standings.append(item)
+        
+    pprint(show_sorted_standings)
 
 
 def main():
@@ -159,14 +139,12 @@ def main():
     print('To start the 40 game tournament: \n')
     print('Enter the teams that played and the outcome of the game')
     counter = 1
-    while counter:
+    while counter < 40:
         counter += 1
         team1, team2 = input_results()
         update_team_standings(team1, team2)
         pprint(teams)
-        played_all_games(MAX_LEAGUE_GAMES)
-        show_sorted_standings()
-    pprint(show_sorted_standings)
+    show_sorted_standings()
 
 
 if __name__ == '__main__':
