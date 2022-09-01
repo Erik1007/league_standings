@@ -43,7 +43,7 @@ def input_team_name(prompt):
         team_name = input(prompt).upper()
         if team_name_exists(team_name):
             break
-        print('Please enter a valid team name')
+        print('Please enter a valid team name\n')
 
     return team_name
 
@@ -63,16 +63,16 @@ def input_results():
     team1 = {}
     team2 = {}
     while True:
-        team1_name = input_team_name("Enter the letter for the first team: ")
+        team1_name = input_team_name("Enter the letter for the first team: \n")
         team1_result = input_team_result(
-            "Did they Win (W), lose (L) or Tie (T): ")
-        team2_name = input_team_name('Enter the letter of the second team: ')
+            "Did they Win (W), lose (L) or Tie (T): \n")
+        team2_name = input_team_name('Enter the letter of the second team: \n')
 
         if validate_input(team1_name, team1_result):
             team1[team1_name] = score_map_dict[team1_result]
             if validate_game(team1_name, team2_name):
                 if team1_name != team2_name:
-                    print("data is valid")
+                    print("data is valid\n")
 
                     if team1_result == 'W':
                         team2[team2_name] = 'LOSSES'
@@ -92,7 +92,7 @@ def input_team_result(prompt):
         result = input(prompt).upper()
         if result in 'WLT':
             break
-        print('Invalid input, pleae try again')
+        print('Invalid input, pleae try again\n')
     return result
 
 
@@ -104,10 +104,10 @@ def validate_input(team_name, team_result):
         print()
         return False
     if played_all_games(team_name) == MAX_TEAM_GAMES:
-        print('This team has played too many games, try again')
+        print('This team has played too many games, try again\n')
         return False
     if count_games(team_name) == MAX_LEAGUE_GAMES:
-        print('That ends the season:')
+        print('That ends the season:\n')
         show_sorted_standings()
         return False
  
@@ -119,7 +119,7 @@ def validate_game(team1_name, team2_name):
     Checking that the team names are different
     """
     if team1_name == team2_name:
-        print('Teams cannot play themself, please enter a valid name')
+        print('Teams cannot play themself, please enter a valid name\n')
         return False
     return True
 
@@ -149,7 +149,7 @@ def show_sorted_standings():
             teams.items(), key=lambda item: item[1]['WINS'], reverse=True):
         sorted_standings.append(item)
 
-    print('That is the end of the season, here are the results: ')
+    print('That is the end of the season, here are the results: \n')
     pprint(sorted_standings)
 
 
@@ -159,13 +159,13 @@ def main():
     determine the amount of times the program runs
     """
     print('Welcome to the League Standings \n')
-    print('In this tournament, There are 5 teams, each team plays 4 games')
+    print('In this tournament, There are 5 teams, each team plays 8 games\n')
     pprint(teams)
-    print('To start the 20 game tournament: \n')
-    print('Enter the teams that played and the outcome of the game')
+    print('To start the 40 game tournament: \n')
+    print('Enter the teams that played and the outcome of the game\n')
     game_count = 0
     while game_count != MAX_LEAGUE_GAMES:
-        print(f'There have been {game_count} games played.')
+        print(f'There have been {game_count} games played')
         team1, team2 = input_results()
         update_team_standings(team1, team2)
         pprint(teams)

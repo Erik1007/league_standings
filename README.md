@@ -117,7 +117,17 @@ The bugs that have been encountered have mainly involved the processes of the fu
 # **Deployment process**
 
 This program was deployed first in github and secondly in Heroku.com.
+The first steps are deployment into github:
 
+The site was built and deployed to GitHub pages. The steps to deploy are as follows:
+
+Enter the GitHub repository.
+
+Navigate to the Settings tab, then selecting the 'pages link on the left side link section. selecting the source section in the drop tab, select the Master Branch.
+
+Once the master branch has been selected, the page will be automatically refreshed with a detailed green ribbon display to indicate the successful deployment.
+
+Multiple steps were required for deploying from github to Heroku.com, such as preparing the run.py document and adding requirements.
 
 
 
