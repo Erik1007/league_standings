@@ -1,5 +1,7 @@
 from pprint import pprint
 
+MAX_LEAGUE_GAMES = 10
+MAX_TEAM_GAMES = 4
 
 teams = {
     "A": {"WINS": 0, "TIES": 0, "LOSSES": 0},
@@ -14,6 +16,21 @@ score_map_dict = {
     'L': 'LOSSES',
     'T': 'TIES'
 }
+
+
+def played_all_games(team_name):
+    """
+    This is set a limit on how many times a team can play
+    """
+    return count_games(team_name) == MAX_TEAM_GAMES
+
+
+def count_games(team_name):
+    """
+    counting the number of times a team plays
+    """
+    standing = teams[team_name]
+    return sum(standing.values()) == MAX_LEAGUE_GAMES
 
 
 def input_team_name(prompt):
@@ -48,7 +65,7 @@ def input_results():
     while True:
         team1_name = input_team_name("Enter the letter for the first team: ")
         team1_result = input_team_result(
-            "Did they Win (W), lose (L) or Tie (T)")
+            "Did they Win (W), lose (L) or Tie (T): ")
         team2_name = input_team_name('Enter the letter of the second team: ')
 
         if validate_input(team1_name, team1_result):
@@ -86,7 +103,14 @@ def validate_input(team_name, team_result):
     if team_result not in "WLT":
         print()
         return False
-    
+    if played_all_games(team_name) == MAX_TEAM_GAMES:
+        print('This team has played too many games, try again')
+        return False
+    if count_games(team_name) == MAX_LEAGUE_GAMES:
+        print('That ends the season:')
+        show_sorted_standings()
+        return False
+ 
     return True
 
 
@@ -124,8 +148,9 @@ def show_sorted_standings():
     for item in sorted(
             teams.items(), key=lambda item: item[1]['WINS'], reverse=True):
         sorted_standings.append(item)
-        
-    pprint(show_sorted_standings)
+
+    print('That is the end of the season, here are the results: ')
+    pprint(sorted_standings)
 
 
 def main():
@@ -134,16 +159,17 @@ def main():
     determine the amount of times the program runs
     """
     print('Welcome to the League Standings \n')
-    print('In this tournament, There are 5 teams, each team plays 8 games')
+    print('In this tournament, There are 5 teams, each team plays 4 games')
     pprint(teams)
-    print('To start the 40 game tournament: \n')
+    print('To start the 20 game tournament: \n')
     print('Enter the teams that played and the outcome of the game')
-    counter = 1
-    while counter < 40:
-        counter += 1
+    game_count = 0
+    while game_count != MAX_LEAGUE_GAMES:
+        print(f'There have been {game_count} games played.')
         team1, team2 = input_results()
         update_team_standings(team1, team2)
         pprint(teams)
+        game_count += 1
     show_sorted_standings()
 
 
