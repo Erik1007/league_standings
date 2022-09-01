@@ -129,6 +129,8 @@ Once the master branch has been selected, the page will be automatically refresh
 
 Multiple steps were required for deploying from github to Heroku.com, such as preparing the run.py document and adding requirements.
 
+Automatic updates was selected in Heroku.com on the main branch linked to github, and the program has bee deployed successfully.
+
 
 
 # **Code Credits:**
